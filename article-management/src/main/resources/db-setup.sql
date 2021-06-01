@@ -12,9 +12,10 @@ CREATE TABLE `isp_user_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `email` varchar(45) NOT NULL,
   `signature` varchar(45) DEFAULT NULL,
-  `nickname` varchar(45) DEFAULT NULL,
+  `nickname` varchar(45) NOT NULL,
+  `email_verified` boolean DEFAULT false,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -25,7 +26,7 @@ DROP TABLE IF EXISTS `isp_article_category`;
 
 CREATE TABLE `isp_article_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(45) DEFAULT NULL,
+  `category_name` varchar(45) NOT NULL,
   `parent_category_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -36,12 +37,12 @@ CREATE TABLE `isp_article_category` (
 
 CREATE TABLE `isp_article_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) DEFAULT NULL,
+  `title` varchar(45) NOT NULL,
   `description` varchar(45) DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
+  `content` longtext NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `tag` varchar(60) DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
+  `author_id` int(11) NOT NULL,
   `create_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

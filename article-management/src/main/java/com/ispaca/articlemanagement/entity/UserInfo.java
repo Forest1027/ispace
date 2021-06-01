@@ -1,6 +1,8 @@
 package com.ispaca.articlemanagement.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "isp_user_info")
@@ -8,7 +10,7 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -17,19 +19,25 @@ public class UserInfo {
     private String lastName;
 
     @Column(name = "email")
+    @NotNull
+    @Email
     private String email;
 
     @Column(name = "signature")
     private String signature;
 
     @Column(name = "nickname")
+    @NotNull
     private String nickName;
 
-    public int getId() {
+    @Column(name = "email_verified")
+    private Boolean emailVerified;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -71,6 +79,14 @@ public class UserInfo {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public Boolean getEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
     }
 
     @Override

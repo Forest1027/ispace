@@ -4,6 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -15,12 +16,14 @@ public class ArticleDetail {
     private int id;
 
     @Column(name = "title")
+    @NotNull
     private String title;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "content")
+    @NotNull
     private String content;
 
     @ManyToOne
@@ -32,6 +35,7 @@ public class ArticleDetail {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @NotNull
     private UserInfo user;
 
     @CreationTimestamp

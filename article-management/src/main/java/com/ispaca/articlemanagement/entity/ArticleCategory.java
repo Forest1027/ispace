@@ -1,6 +1,7 @@
 package com.ispaca.articlemanagement.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "isp_article_category")
@@ -11,6 +12,7 @@ public class ArticleCategory {
     private int id;
 
     @Column(name = "category_name")
+    @NotNull
     private String categoryName;
 
     @Column(name = "parent_category_id")
