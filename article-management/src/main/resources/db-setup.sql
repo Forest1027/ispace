@@ -42,8 +42,8 @@ CREATE TABLE `isp_article_detail` (
   `category_id` int(11) DEFAULT NULL,
   `tag` varchar(60) DEFAULT NULL,
   `author_id` int(11) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
+  `create_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`author_id`) REFERENCES isp_user_info(id),
   FOREIGN KEY (`category_id`) REFERENCES isp_article_category(id)
