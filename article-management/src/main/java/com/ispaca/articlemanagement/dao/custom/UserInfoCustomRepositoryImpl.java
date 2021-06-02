@@ -1,16 +1,16 @@
 package com.ispaca.articlemanagement.dao.custom;
 
 import com.ispaca.articlemanagement.entity.UserInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @Repository
 @Transactional
 public class UserInfoCustomRepositoryImpl implements UserInfoCustomRepository {
-    @PersistenceContext
+    @Autowired
     private EntityManager entityManager;
 
     @Override
@@ -22,5 +22,17 @@ public class UserInfoCustomRepositoryImpl implements UserInfoCustomRepository {
             throw new RuntimeException("User does not exist. User Id: " + userId);
         }
         entityManager.merge(user);
+    }
+
+    @Override
+    public UserInfo saveUserInfo(UserInfo userInfo) {
+        UserInfo user = entityManager.find(UserInfo.class, userInfo.getId());
+        if (user == null) {
+            throw new RuntimeException("User does not exist. User Id: " + userInfo.getId());
+        } else {
+            userInfo.setEmailVerified(user.getEmailVerified());
+        }
+        entityManager.merge(userInfo);
+        return userInfo;
     }
 }
