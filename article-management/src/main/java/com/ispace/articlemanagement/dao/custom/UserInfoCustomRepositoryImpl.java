@@ -1,6 +1,6 @@
-package com.ispaca.articlemanagement.dao.custom;
+package com.ispace.articlemanagement.dao.custom;
 
-import com.ispaca.articlemanagement.entity.UserInfo;
+import com.ispace.articlemanagement.entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

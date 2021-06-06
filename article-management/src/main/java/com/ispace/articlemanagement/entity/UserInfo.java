@@ -1,4 +1,4 @@
-package com.ispaca.articlemanagement.entity;
+package com.ispace.articlemanagement.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -1,4 +1,4 @@
-package com.ispaca.articlemanagement.entity;
+package com.ispace.articlemanagement.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

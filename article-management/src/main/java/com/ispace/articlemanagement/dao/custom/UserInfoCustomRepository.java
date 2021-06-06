@@ -1,6 +1,6 @@
-package com.ispaca.articlemanagement.dao.custom;
+package com.ispace.articlemanagement.dao.custom;
 
-import com.ispaca.articlemanagement.entity.UserInfo;
+import com.ispace.articlemanagement.entity.UserInfo;
 
 public interface UserInfoCustomRepository {
     void updateEmailVerified(int userId, boolean status);

@@ -1,6 +1,6 @@
-package com.ispaca.articlemanagement.service;
+package com.ispace.articlemanagement.service;
 
-import com.ispaca.articlemanagement.entity.UserInfo;
+import com.ispace.articlemanagement.entity.UserInfo;
 
 import java.util.List;
 import java.util.Optional;

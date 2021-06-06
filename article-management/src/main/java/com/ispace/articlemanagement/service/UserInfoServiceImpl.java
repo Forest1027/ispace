@@ -1,7 +1,7 @@
-package com.ispaca.articlemanagement.service;
+package com.ispace.articlemanagement.service;
 
-import com.ispaca.articlemanagement.dao.UserInfoRepository;
-import com.ispaca.articlemanagement.entity.UserInfo;
+import com.ispace.articlemanagement.dao.UserInfoRepository;
+import com.ispace.articlemanagement.entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

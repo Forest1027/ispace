@@ -1,7 +1,7 @@
-package com.ispaca.articlemanagement.dao;
+package com.ispace.articlemanagement.dao;
 
-import com.ispaca.articlemanagement.dao.custom.UserInfoCustomRepository;
-import com.ispaca.articlemanagement.entity.UserInfo;
+import com.ispace.articlemanagement.dao.custom.UserInfoCustomRepository;
+import com.ispace.articlemanagement.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
