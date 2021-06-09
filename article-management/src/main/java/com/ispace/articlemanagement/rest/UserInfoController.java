@@ -1,7 +1,7 @@
-package com.ispaca.articlemanagement.rest;
+package com.ispace.articlemanagement.rest;
 
-import com.ispaca.articlemanagement.entity.UserInfo;
-import com.ispaca.articlemanagement.service.UserInfoService;
+import com.ispace.articlemanagement.entity.UserInfo;
+import com.ispace.articlemanagement.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

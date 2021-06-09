@@ -1,4 +1,4 @@
-package com.ispaca.articlemanagement.rest;
+package com.ispace.articlemanagement.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
