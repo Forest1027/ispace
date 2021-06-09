@@ -33,10 +33,8 @@ public class ArticleDetail {
     @Column(name = "tag")
     private String tag;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
     @NotNull
-    private UserInfo user;
+    private Integer authorId;
 
     @CreationTimestamp
     @Column(name = "create_time", nullable = false, updatable = false)
@@ -94,12 +92,12 @@ public class ArticleDetail {
         this.tag = tag;
     }
 
-    public UserInfo getUser() {
-        return user;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setUser(UserInfo user) {
-        this.user = user;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 
     public Date getCreateTime() {
@@ -127,7 +125,7 @@ public class ArticleDetail {
                 ", content='" + content + '\'' +
                 ", articleCategory=" + articleCategory +
                 ", tag='" + tag + '\'' +
-                ", user=" + user +
+                ", authorId=" + authorId +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
