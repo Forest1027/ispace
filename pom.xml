@@ -43,6 +43,7 @@
 			<version>7.0.1.Final</version>
 		</dependency>
 
+		<!--adding support for security-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -52,6 +53,13 @@
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
 			<version>2.0.1</version>
+		</dependency>
+
+		<!--adding support for encryption-->
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>3.0.3</version>
 		</dependency>
 
 		<dependency>
