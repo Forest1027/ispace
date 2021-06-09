@@ -1,0 +1,21 @@
+server:
+  port: 8090
+okta:
+  oauth2:
+    client-id: ${oauth_client_id}
+    client-secret: ${oauth_client_secret}
+    issuer: https://dev-83250362.okta.com/oauth2/default
+#
+# JDBC properties
+#
+spring:
+  data:
+    rest:
+      basePath: /userManagement
+  datasource:
+    url: jdbc:mysql://localhost:3306/ispace_dev?useSSL=false&serverTimezone=Europe/Dublin
+    username: ${db_username}
+    password: ${db_password}
+    driver-class-name: com.mysql.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
