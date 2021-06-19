@@ -1,9 +1,9 @@
-package usermanagement.dao.custom;
+package com.ispace.usermanagement.dao.custom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import usermanagement.entity.UserInfo;
+import com.ispace.usermanagement.entity.UserInfo;
 
 import javax.persistence.EntityManager;
 

@@ -1,7 +1,7 @@
-package usermanagement.service;
+package com.ispace.usermanagement.service;
 
 
-import usermanagement.entity.UserInfo;
+import com.ispace.usermanagement.entity.UserInfo;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ public interface UserInfoService {
 
     UserInfo updateUserInfo(UserInfo userInfo);
 
-    UserInfo createUserInfo(UserInfo userInfo);
+    UserInfo createUserInfo(UserInfo userInfo) throws Exception;
 
     List<UserInfo> getUsers();
 
