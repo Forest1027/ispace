@@ -9,6 +9,7 @@ import com.ispace.usermanagement.service.UserInfoService;
 
 @RestController
 @RequestMapping("/userManagement")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
