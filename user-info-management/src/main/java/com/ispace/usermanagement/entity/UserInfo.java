@@ -1,4 +1,4 @@
-package usermanagement.entity;
+package com.ispace.usermanagement.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -32,6 +32,9 @@ public class UserInfo {
 
     @Column(name = "email_verified")
     private Boolean emailVerified;
+
+    @Transient
+    private String password;
 
     public Integer getId() {
         return id;
@@ -87,6 +90,14 @@ public class UserInfo {
 
     public void setEmailVerified(Boolean emailVerified) {
         this.emailVerified = emailVerified;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
