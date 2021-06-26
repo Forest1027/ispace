@@ -1,18 +1,35 @@
 package com.ispace.articlemanagement.config;
 
+import com.okta.spring.boot.oauth.Okta;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private static final String[] AUTH_WHITELIST = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v3/api-docs",
+            "/webjars/**",
+            "/swagger-ui/**"
+    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**").authorizeRequests()
-                .antMatchers("/", "/login**", "/articleManagement/articleDetails").permitAll()
+        http.csrf().disable().authorizeRequests()
+                .antMatchers(AUTH_WHITELIST)
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/articleManagement/articleDetails/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .oauth2Login();
+                .oauth2ResourceServer().jwt(); //or .opaqueToken();
+        // process CORS annotations
+        http.cors();
+
+        // force a non-empty response body for 401's to make the response more browser friendly
+        Okta.configureResourceServer401ResponseBody(http);
     }
 }
