@@ -37,8 +37,8 @@ CREATE TABLE `isp_article_category` (
 
 CREATE TABLE `isp_article_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) NOT NULL,
-  `description` varchar(45) DEFAULT NULL,
+  `title` varchar(120) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
   `content` longtext NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `tag` varchar(60) DEFAULT NULL,
