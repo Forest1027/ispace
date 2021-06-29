@@ -1,8 +1,8 @@
 package com.ispace.usermanagement.service;
 
+import com.ispace.shared.dao.UserInfoRepository;
+import com.ispace.shared.entity.UserInfo;
 import com.ispace.usermanagement.constants.OktaUrlConstants;
-import com.ispace.usermanagement.dao.UserInfoRepository;
-import com.ispace.usermanagement.entity.UserInfo;
 import com.ispace.usermanagement.utils.HttpUtil;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

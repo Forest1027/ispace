@@ -1,4 +1,4 @@
-package com.ispace.usermanagement.entity;
+package com.ispace.shared.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
