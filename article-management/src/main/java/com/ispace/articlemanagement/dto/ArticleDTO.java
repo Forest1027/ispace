@@ -1,9 +1,25 @@
 package com.ispace.articlemanagement.dto;
 
 import com.ispace.articlemanagement.entity.ArticleCategory;
+
 import java.util.Date;
 
 public class ArticleDTO {
+    public ArticleDTO() {
+    }
+
+    public ArticleDTO(int id, String title, String description, String content, ArticleCategory articleCategory, Integer authorId, String authorName, Date createTime, Date updateTime) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.articleCategory = articleCategory;
+        this.authorId = authorId;
+        this.authorName = authorName;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
     private int id;
 
     private String title;

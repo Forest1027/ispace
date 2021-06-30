@@ -5,5 +5,5 @@ import com.ispace.articlemanagement.dto.ArticleDTO;
 import java.util.List;
 
 public interface ArticleService {
-    List<ArticleDTO> getArticleList();
+    List<ArticleDTO> getArticleList(int pageNumber, int pageSize);
 }

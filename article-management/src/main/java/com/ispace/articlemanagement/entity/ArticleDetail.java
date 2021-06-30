@@ -1,5 +1,6 @@
 package com.ispace.articlemanagement.entity;
 
+import com.ispace.shared.entity.UserInfo;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,6 +11,17 @@ import java.util.Date;
 @Entity
 @Table(name = "isp_article_detail")
 public class ArticleDetail {
+
+    public ArticleDetail(int id, String title, String description, ArticleCategory articleCategory, UserInfo author, Date createTime, Date updateTime) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.articleCategory = articleCategory;
+        this.author = author;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,7 +35,6 @@ public class ArticleDetail {
     private String description;
 
     @Column(name = "content")
-    @NotNull
     private String content;
 
     @ManyToOne
@@ -34,7 +45,9 @@ public class ArticleDetail {
     private String tag;
 
     @NotNull
-    private Integer authorId;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private UserInfo author;
 
     @CreationTimestamp
     @Column(name = "create_time", nullable = false, updatable = false)
@@ -92,12 +105,12 @@ public class ArticleDetail {
         this.tag = tag;
     }
 
-    public Integer getAuthorId() {
-        return authorId;
+    public UserInfo getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Integer authorId) {
-        this.authorId = authorId;
+    public void setAuthor(UserInfo author) {
+        this.author = author;
     }
 
     public Date getCreateTime() {
@@ -125,7 +138,7 @@ public class ArticleDetail {
                 ", content='" + content + '\'' +
                 ", articleCategory=" + articleCategory +
                 ", tag='" + tag + '\'' +
-                ", authorId=" + authorId +
+                ", author=" + author +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
