@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST)
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/articleManagement/articleDetails/*")
+                .antMatchers(HttpMethod.GET, "/articleManagement/articleDetails/*", "/articleManagement/articleCategories")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
