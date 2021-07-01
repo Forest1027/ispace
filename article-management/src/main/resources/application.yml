@@ -5,6 +5,9 @@ okta:
 # JDBC properties
 #
 spring:
+  data:
+    rest:
+      basePath: /articleManagement
   datasource:
     url: jdbc:mysql://localhost:3306/ispace_dev?useSSL=false&serverTimezone=Europe/Dublin
     username: ${db_username}

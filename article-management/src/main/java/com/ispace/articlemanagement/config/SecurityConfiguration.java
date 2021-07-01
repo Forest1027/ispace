@@ -23,6 +23,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST)
                 .permitAll()
+                .antMatchers(HttpMethod.GET, "/articleManagement/articleDetails/*")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .oauth2ResourceServer().jwt(); //or .opaqueToken();

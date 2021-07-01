@@ -11,6 +11,8 @@ import java.util.Date;
 @Entity
 @Table(name = "isp_article_detail")
 public class ArticleDetail {
+    public ArticleDetail() {
+    }
 
     public ArticleDetail(int id, String title, String description, ArticleCategory articleCategory, UserInfo author, Date createTime, Date updateTime) {
         this.id = id;
