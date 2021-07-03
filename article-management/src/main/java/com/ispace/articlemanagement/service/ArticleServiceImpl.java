@@ -1,11 +1,13 @@
 package com.ispace.articlemanagement.service;
 
+import com.ispace.articlemanagement.dao.ArticleCategoryRepository;
 import com.ispace.articlemanagement.dao.ArticleDetailRepository;
 import com.ispace.articlemanagement.dto.ArticleDTO;
+import com.ispace.articlemanagement.entity.ArticleCategory;
 import com.ispace.articlemanagement.entity.ArticleDetail;
-import com.ispace.shared.dao.UserInfoRepository;
 import com.ispace.shared.entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +19,13 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleDetailRepository articleDetailRepository;
 
+    @Autowired
+    private ArticleCategoryRepository articleCategoryRepository;
+
     @Override
-    public List<ArticleDTO> getArticleList(int pageNumber, int pageSize) {
-        List<ArticleDetail> articleDetails = articleDetailRepository.getArticleBrief(pageNumber, pageSize);
+    public List<ArticleDTO> getArticleList(int page, int size) {
+        List<ArticleDetail> articleDetails = articleDetailRepository.getArticleBrief(Pageable.ofSize(size).withPage(page));
+        System.out.println(articleDetails.size());
         return articleDetails.stream()
                 .map(articleDetail -> {
                     UserInfo author = articleDetail.getAuthor();
@@ -36,5 +42,10 @@ public class ArticleServiceImpl implements ArticleService {
                             articleDetail.getUpdateTime()
                     );
                 }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ArticleCategory> getArticleCategoryList(int page, int size) {
+        return articleCategoryRepository.findByParentIdNotNull(Pageable.ofSize(size).withPage(page));
     }
 }

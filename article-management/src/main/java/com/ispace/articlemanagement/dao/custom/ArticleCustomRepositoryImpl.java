@@ -2,6 +2,7 @@ package com.ispace.articlemanagement.dao.custom;
 
 import com.ispace.articlemanagement.entity.ArticleDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,10 +17,8 @@ public class ArticleCustomRepositoryImpl implements ArticleCustomRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<ArticleDetail> getArticleBrief(int pageNumber, int pageSize) {
+    public List<ArticleDetail> getArticleBrief(Pageable pageable) {
         Query query = entityManager.createQuery("SELECT new com.ispace.articlemanagement.entity.ArticleDetail(a.id, a.title, a.description, a.articleCategory, a.author, a.createTime, a.updateTime) FROM ArticleDetail a");
-        query.setFirstResult((pageNumber - 1) * pageSize);
-        query.setMaxResults(pageSize);
         return query.getResultList();
     }
 }
