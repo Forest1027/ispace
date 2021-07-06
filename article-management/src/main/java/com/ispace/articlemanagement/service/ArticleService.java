@@ -8,5 +8,14 @@ import java.util.List;
 
 public interface ArticleService {
     List<ArticleDTO> getArticleList(int page, int size);
+
     List<ArticleCategory> getArticleCategoryList(int page, int size);
+
+    ArticleDTO getArticleById(int id);
+
+    ArticleDTO createArticle(ArticleDTO articleDTO, String idToken);
+
+    ArticleDTO updateArticle(ArticleDTO articleDTO, String idToken);
+
+    String deleteArticleById(int id, String idToken);
 }

@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 public class ExceptionHandler {
 
     @Around("execution(* com.ispace.articlemanagement.rest.*.*(..))")
-    public ResponseEntity handleGlobalException(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object handleGlobalException(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         try {
-            return  (ResponseEntity)proceedingJoinPoint.proceed();
+            return proceedingJoinPoint.proceed();
         }catch (Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

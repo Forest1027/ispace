@@ -1,6 +1,6 @@
-package com.ispace.articlemanagement.dao;
+package com.ispace.articlemanagement.repository;
 
-import com.ispace.articlemanagement.dao.custom.ArticleCustomRepository;
+import com.ispace.articlemanagement.repository.custom.ArticleCustomRepository;
 import com.ispace.articlemanagement.entity.ArticleDetail;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -16,7 +16,8 @@ CREATE TABLE `isp_user_info` (
   `signature` varchar(45) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
   `email_verified` boolean DEFAULT false,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -42,11 +43,11 @@ CREATE TABLE `isp_article_detail` (
   `content` longtext NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `tag` varchar(60) DEFAULT NULL,
-  `author_id` int(11) NOT NULL,
+  `author_email` varchar(45) NOT NULL,
   `create_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`author_id`) REFERENCES isp_user_info(id),
+  FOREIGN KEY (`author_email`) REFERENCES isp_user_info(email),
   FOREIGN KEY (`category_id`) REFERENCES isp_article_category(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 

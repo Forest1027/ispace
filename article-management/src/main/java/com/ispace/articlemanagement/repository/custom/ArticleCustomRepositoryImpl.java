@@ -1,4 +1,4 @@
-package com.ispace.articlemanagement.dao.custom;
+package com.ispace.articlemanagement.repository.custom;
 
 import com.ispace.articlemanagement.entity.ArticleDetail;
 import org.springframework.beans.factory.annotation.Autowired;

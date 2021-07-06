@@ -1,4 +1,4 @@
-package com.ispace.articlemanagement.dao;
+package com.ispace.articlemanagement.repository;
 
 import com.ispace.articlemanagement.entity.ArticleCategory;
 import org.springframework.data.domain.Pageable;

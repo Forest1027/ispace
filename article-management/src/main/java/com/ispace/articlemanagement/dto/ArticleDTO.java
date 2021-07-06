@@ -5,20 +5,6 @@ import com.ispace.articlemanagement.entity.ArticleCategory;
 import java.util.Date;
 
 public class ArticleDTO {
-    public ArticleDTO() {
-    }
-
-    public ArticleDTO(int id, String title, String description, String content, ArticleCategory articleCategory, Integer authorId, String authorName, Date createTime, Date updateTime) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.content = content;
-        this.articleCategory = articleCategory;
-        this.authorId = authorId;
-        this.authorName = authorName;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
 
     private int id;
 
@@ -34,9 +20,27 @@ public class ArticleDTO {
 
     private String authorName;
 
+    private String authorEmail;
+
     private Date createTime;
 
     private Date updateTime;
+
+    public ArticleDTO() {
+    }
+
+    public ArticleDTO(int id, String title, String description, String content, ArticleCategory articleCategory, Integer authorId, String authorName, String authorEmail, Date createTime, Date updateTime) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.articleCategory = articleCategory;
+        this.authorId = authorId;
+        this.authorName = authorName;
+        this.authorEmail = authorEmail;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
 
     public int getId() {
         return id;
@@ -108,5 +112,13 @@ public class ArticleDTO {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getAuthorEmail() {
+        return authorEmail;
+    }
+
+    public void setAuthorEmail(String authorEmail) {
+        this.authorEmail = authorEmail;
     }
 }

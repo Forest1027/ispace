@@ -11,18 +11,6 @@ import java.util.Date;
 @Entity
 @Table(name = "isp_article_detail")
 public class ArticleDetail {
-    public ArticleDetail() {
-    }
-
-    public ArticleDetail(int id, String title, String description, ArticleCategory articleCategory, UserInfo author, Date createTime, Date updateTime) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.articleCategory = articleCategory;
-        this.author = author;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +36,7 @@ public class ArticleDetail {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author_email", referencedColumnName = "email")
     private UserInfo author;
 
     @CreationTimestamp
@@ -58,6 +46,20 @@ public class ArticleDetail {
     @UpdateTimestamp
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
+
+    public ArticleDetail() {
+    }
+
+    public ArticleDetail(int id, String title, String description, String content, ArticleCategory articleCategory, UserInfo author, Date createTime, Date updateTime) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.articleCategory = articleCategory;
+        this.author = author;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
 
     public int getId() {
         return id;
