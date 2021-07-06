@@ -16,8 +16,8 @@ CREATE TABLE `isp_user_info` (
   `signature` varchar(45) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
   `email_verified` boolean DEFAULT false,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC)
+  PRIMARY KEY (`email`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) 
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
