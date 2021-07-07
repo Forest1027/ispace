@@ -1,7 +1,7 @@
-package com.ispace.usermanagement.dao.custom;
+package com.ispace.shared.dao.custom;
 
 
-import com.ispace.usermanagement.entity.UserInfo;
+import com.ispace.shared.entity.UserInfo;
 
 public interface UserInfoCustomRepository {
     void updateEmailVerified(int userId, boolean status);

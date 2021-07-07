@@ -1,8 +1,8 @@
 package com.ispace.usermanagement.utils;
 
+import com.ispace.shared.entity.UserInfo;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import com.ispace.usermanagement.entity.UserInfo;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;

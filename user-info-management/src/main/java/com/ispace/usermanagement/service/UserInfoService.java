@@ -1,7 +1,7 @@
 package com.ispace.usermanagement.service;
 
 
-import com.ispace.usermanagement.entity.UserInfo;
+import com.ispace.shared.entity.UserInfo;
 
 import java.util.List;
 import java.util.Optional;

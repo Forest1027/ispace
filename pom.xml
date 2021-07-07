@@ -5,6 +5,7 @@
 	<modules>
 		<module>article-management</module>
 		<module>user-info-management</module>
+		<module>shared</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
