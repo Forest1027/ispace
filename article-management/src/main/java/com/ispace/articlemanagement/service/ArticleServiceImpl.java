@@ -5,6 +5,7 @@ import com.ispace.articlemanagement.repository.ArticleDetailRepository;
 import com.ispace.articlemanagement.dto.ArticleDTO;
 import com.ispace.articlemanagement.entity.ArticleCategory;
 import com.ispace.articlemanagement.entity.ArticleDetail;
+import com.ispace.articlemanagement.repository.custom.CommonCustomRepository;
 import com.ispace.articlemanagement.utils.EntityDtoConvertUtil;
 import com.ispace.articlemanagement.utils.JwtUtil;
 import com.ispace.shared.entity.UserInfo;
@@ -25,6 +26,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private ArticleCategoryRepository articleCategoryRepository;
+
+    @Autowired
+    private CommonCustomRepository<ArticleDetail> customRepository;
 
     @Override
     public List<ArticleDTO> getArticleList(int page, int size) {
@@ -69,8 +73,9 @@ public class ArticleServiceImpl implements ArticleService {
         String email = JwtUtil.getCurrentUserPayload(idToken).get("email").toString();
         articleDTO.setAuthorEmail(email);
         ArticleDetail articleDetail = EntityDtoConvertUtil.convertArticleDTOToEntity(articleDTO);
-        ArticleDetail detail = articleDetailRepository.save(articleDetail);
-        return EntityDtoConvertUtil.convertArticleEntityToDTO(detail);
+        articleDetail = articleDetailRepository.saveAndFlush(articleDetail);
+        customRepository.refresh(articleDetail);
+        return EntityDtoConvertUtil.convertArticleEntityToDTO(articleDetail);
     }
 
     @Override
@@ -80,6 +85,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
         Optional<ArticleDetail> article = articleDetailRepository.findById(articleDTO.getId());
         if (article.isPresent()) {
+            articleDTO.setAuthorEmail(JwtUtil.getCurrentUserPayload(idToken).get("email").toString());
             ArticleDetail entity = EntityDtoConvertUtil.convertArticleDTOToEntity(articleDTO);
             articleDetailRepository.save(entity);
         } else {
@@ -98,7 +104,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     private boolean verifyCurrentUserIsTheAuthor(int id, String token) {
-        if (token.isEmpty()) {
+        if (token == null || token.isEmpty()) {
             throw new RuntimeException("Can't verify user's identity");
         }
         Optional<ArticleDetail> result = articleDetailRepository.findById(id);
