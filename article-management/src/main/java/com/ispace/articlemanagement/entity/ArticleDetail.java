@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "isp_article_detail")
@@ -145,5 +146,18 @@ public class ArticleDetail {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ArticleDetail that = (ArticleDetail) o;
+        return id == that.id && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(content, that.content) && Objects.equals(articleCategory, that.articleCategory) && Objects.equals(tag, that.tag) && Objects.equals(author, that.author) && Objects.equals(createTime, that.createTime) && Objects.equals(updateTime, that.updateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, content, articleCategory, tag, author, createTime, updateTime);
     }
 }

@@ -9,6 +9,7 @@ import com.ispace.articlemanagement.repository.custom.CommonCustomRepository;
 import com.ispace.articlemanagement.utils.EntityDtoConvertUtil;
 import com.ispace.articlemanagement.utils.JwtUtil;
 import com.ispace.shared.entity.UserInfo;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
@@ -33,7 +35,6 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<ArticleDTO> getArticleList(int page, int size) {
         List<ArticleDetail> articleDetails = articleDetailRepository.getArticleBrief(Pageable.ofSize(size).withPage(page));
-        System.out.println(articleDetails.size());
         return articleDetails.stream()
                 .map(articleDetail -> {
                     UserInfo author = articleDetail.getAuthor();

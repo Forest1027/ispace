@@ -2,6 +2,7 @@ package com.ispace.articlemanagement.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 @Table(name = "isp_article_category")
@@ -49,5 +50,18 @@ public class ArticleCategory {
                 ", categoryName='" + categoryName + '\'' +
                 ", parentCategoryId=" + parentCategoryId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ArticleCategory that = (ArticleCategory) o;
+        return id == that.id && Objects.equals(categoryName, that.categoryName) && Objects.equals(parentCategoryId, that.parentCategoryId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, categoryName, parentCategoryId);
     }
 }
