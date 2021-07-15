@@ -44,7 +44,7 @@ class ArticleControllerIntegrationTest {
     void cannotCreateArticleWithoutToken() throws Exception {
         ArticleDTO articleDTO = getArticleDTO(email);
         String json = JSONObject.wrap(articleDTO).toString();
-        this.mockMvc.perform(post("/articleManagement/v1/articles").contentType(MediaType.APPLICATION_JSON).content(json).header("Authorization", "Bearer " + "accessToken")).andDo(print()).andExpect(status().isUnauthorized());
+        this.mockMvc.perform(post("/articleManagement/v1/articles").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isUnauthorized());
     }
 
 
@@ -52,14 +52,14 @@ class ArticleControllerIntegrationTest {
     void cannotUpdateArticleWithoutToken() throws Exception {
         ArticleDTO articleDTO = getArticleDTO(email);
         String json = JSONObject.wrap(articleDTO).toString();
-        this.mockMvc.perform(put("/articleManagement/v1/articles").contentType(MediaType.APPLICATION_JSON).content(json).header("Authorization", "Bearer " + "accessToken")).andDo(print()).andExpect(status().isUnauthorized());
+        this.mockMvc.perform(put("/articleManagement/v1/articles").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isUnauthorized());
     }
 
     @Test
     void cannotDeleteArticleByIdWithoutToken() throws Exception {
         ArticleDTO articleDTO = getArticleDTO(email);
         String json = JSONObject.wrap(articleDTO).toString();
-        this.mockMvc.perform(delete("/articleManagement/v1/articles/1").header("Authorization", "Bearer " + "accessToken")).andDo(print()).andExpect(status().isUnauthorized());
+        this.mockMvc.perform(delete("/articleManagement/v1/articles/1")).andDo(print()).andExpect(status().isUnauthorized());
     }
 
 
