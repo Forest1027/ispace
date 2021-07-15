@@ -15,7 +15,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/v3/api-docs",
             "/webjars/**",
             "/swagger-ui/**",
-            "/articleManagement/v1/articles",
             "/articleManagement/v1/articleCategories"
     };
 
@@ -24,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST)
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/articleManagement/articleDetails/*", "/articleManagement/articleCategories")
+                .antMatchers(HttpMethod.GET, "/articleManagement/v1/articles", "/articleManagement/v1/articles/*")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

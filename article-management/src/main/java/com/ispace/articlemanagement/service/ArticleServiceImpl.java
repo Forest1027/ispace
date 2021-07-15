@@ -71,7 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDTO createArticle(ArticleDTO articleDTO, String idToken) {
-        String email = JwtUtil.getCurrentUserPayload(idToken).get("email").toString();
+        String email = JwtUtil.getCurrentUserEmailFromAuthorization(idToken);
         articleDTO.setAuthorEmail(email);
         ArticleDetail articleDetail = EntityDtoConvertUtil.convertArticleDTOToEntity(articleDTO);
         articleDetail = articleDetailRepository.saveAndFlush(articleDetail);
@@ -109,7 +109,7 @@ public class ArticleServiceImpl implements ArticleService {
             throw new RuntimeException("Can't verify user's identity");
         }
         Optional<ArticleDetail> result = articleDetailRepository.findById(id);
-        String email = JwtUtil.getCurrentUserPayload(token).get("email").toString();
+        String email = JwtUtil.getCurrentUserEmailFromAuthorization(token);
         if (result.isPresent()) {
             return result.get().getAuthor().getEmail().equals(email);
         } else {

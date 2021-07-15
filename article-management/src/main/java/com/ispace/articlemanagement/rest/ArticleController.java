@@ -33,17 +33,17 @@ public class ArticleController {
     }
 
     @PostMapping("/v1/articles")
-    public ResponseEntity<ArticleDTO> createArticle(@RequestBody ArticleDTO articleDTO, @RequestHeader(required = false) String idToken) {
+    public ResponseEntity<ArticleDTO> createArticle(@RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.createArticle(articleDTO, idToken), HttpStatus.OK);
     }
 
     @PutMapping("/v1/articles")
-    public ResponseEntity<ArticleDTO> updateArticle(@RequestBody ArticleDTO articleDTO, @RequestHeader(required = false) String idToken) {
+    public ResponseEntity<ArticleDTO> updateArticle(@RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.updateArticle(articleDTO, idToken), HttpStatus.OK);
     }
 
     @DeleteMapping("/v1/articles/{id}")
-    public ResponseEntity<String> deleteArticleById(@PathVariable int id, @RequestHeader(required = false) String idToken) {
+    public ResponseEntity<String> deleteArticleById(@PathVariable int id, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.deleteArticleById(id, idToken), HttpStatus.OK);
     }
 

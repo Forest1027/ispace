@@ -47,6 +47,6 @@ class ArticleCustomRepositoryImplTest {
         // then
         assertThat(articles.size()).isGreaterThan(0);
         assertThat(articles.get(0).getTitle()).isNotNull();
-        assertThat(articles.get(0).getContent()).isNotNull();
+        assertThat(articles.get(0).getContent()).isNull();
     }
 }
