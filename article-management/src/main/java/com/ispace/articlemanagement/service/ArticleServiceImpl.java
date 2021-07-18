@@ -86,7 +86,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
         Optional<ArticleDetail> article = articleDetailRepository.findById(articleDTO.getId());
         if (article.isPresent()) {
-            articleDTO.setAuthorEmail(JwtUtil.getCurrentUserPayload(idToken).get("email").toString());
+            articleDTO.setAuthorEmail(JwtUtil.getCurrentUserEmailFromAuthorization(idToken));
             ArticleDetail entity = EntityDtoConvertUtil.convertArticleDTOToEntity(articleDTO);
             articleDetailRepository.save(entity);
         } else {

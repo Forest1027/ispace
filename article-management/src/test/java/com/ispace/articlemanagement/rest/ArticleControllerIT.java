@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ArticleControllerIntegrationTest {
+class ArticleControllerIT {
 
     private static String email;
 
