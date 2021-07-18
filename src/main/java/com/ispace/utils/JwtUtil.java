@@ -1,4 +1,4 @@
-package com.ispace.articlemanagement.utils;
+package com.ispace.utils;
 
 import org.json.JSONObject;
 import java.util.Base64;

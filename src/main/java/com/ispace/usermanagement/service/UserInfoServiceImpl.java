@@ -2,10 +2,9 @@ package com.ispace.usermanagement.service;
 
 import com.ispace.usermanagement.repository.UserInfoRepository;
 import com.ispace.usermanagement.entity.UserInfo;
-import com.ispace.usermanagement.constants.OktaUrlConstants;
-import com.ispace.usermanagement.utils.HttpUtil;
-import org.json.JSONObject;
+import com.ispace.utils.OktaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.net.http.HttpResponse;
 import java.util.List;
@@ -16,9 +15,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserInfoRepository userInfoRepository;
-
-    @Autowired
-    private HttpUtil httpUtil;
 
     @Override
     public void updateEmailVerified(int userId, boolean status) {
@@ -37,8 +33,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public UserInfo createUserInfo(UserInfo userInfo) throws Exception {
-        JSONObject data = HttpUtil.createOktaUserRegisterJson(userInfo);
-        HttpResponse response = HttpUtil.post(OktaUrlConstants.BASE_URL + OktaUrlConstants.CREATE_USER_WITH_PASSWORD, data.toString(), httpUtil.getOktaRequestHeaders());
+        HttpResponse response = OktaUtil.sendRegisterRequest(userInfo);
         if (response.statusCode() == 200) {
             return userInfoRepository.save(userInfo);
         }else {

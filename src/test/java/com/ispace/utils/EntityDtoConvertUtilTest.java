@@ -1,13 +1,11 @@
-package com.ispace.articlemanagement.utils;
+package com.ispace.utils;
 
 import com.ispace.articlemanagement.dto.ArticleDTO;
-import com.ispace.articlemanagement.entity.ArticleCategory;
 import com.ispace.articlemanagement.entity.ArticleDetail;
 import com.ispace.usermanagement.entity.UserInfo;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EntityDtoConvertUtilTest {
 

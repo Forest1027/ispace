@@ -1,4 +1,4 @@
-package com.ispace.articlemanagement.utils;
+package com.ispace.utils;
 
 import com.ispace.articlemanagement.dto.ArticleDTO;
 import com.ispace.articlemanagement.entity.ArticleDetail;

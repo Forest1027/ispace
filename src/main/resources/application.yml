@@ -17,3 +17,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+constants:
+  okta:
+    base_url: https://dev-83250362.okta.com
+    api_paths:
+      create_user_with_password: /api/v1/users?activate=true
+

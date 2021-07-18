@@ -5,7 +5,7 @@ import com.ispace.articlemanagement.entity.ArticleDetail;
 import com.ispace.articlemanagement.repository.ArticleCategoryRepository;
 import com.ispace.articlemanagement.repository.ArticleDetailRepository;
 import com.ispace.articlemanagement.repository.custom.CommonCustomRepository;
-import com.ispace.articlemanagement.utils.EntityDtoConvertUtil;
+import com.ispace.utils.EntityDtoConvertUtil;
 import com.ispace.usermanagement.entity.UserInfo;
 import com.ispace.usermanagement.repository.UserInfoRepository;
 import org.junit.jupiter.api.BeforeEach;
