@@ -1,6 +1,6 @@
 package com.ispace.usermanagement.service;
 
-import com.ispace.shared.dao.UserInfoRepository;
+import com.ispace.shared.repository.UserInfoRepository;
 import com.ispace.shared.entity.UserInfo;
 import com.ispace.usermanagement.constants.OktaUrlConstants;
 import com.ispace.usermanagement.utils.HttpUtil;

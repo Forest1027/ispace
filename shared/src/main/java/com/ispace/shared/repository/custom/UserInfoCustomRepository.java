@@ -1,4 +1,4 @@
-package com.ispace.shared.dao.custom;
+package com.ispace.shared.repository.custom;
 
 
 import com.ispace.shared.entity.UserInfo;

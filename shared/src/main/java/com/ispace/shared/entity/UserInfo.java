@@ -3,6 +3,7 @@ package com.ispace.shared.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 @Table(name = "isp_user_info")
@@ -110,5 +111,18 @@ public class UserInfo {
                 ", signature='" + signature + '\'' +
                 ", nickName='" + nickName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserInfo userInfo = (UserInfo) o;
+        return Objects.equals(id, userInfo.id) && Objects.equals(firstName, userInfo.firstName) && Objects.equals(lastName, userInfo.lastName) && Objects.equals(email, userInfo.email) && Objects.equals(signature, userInfo.signature) && Objects.equals(nickName, userInfo.nickName) && Objects.equals(emailVerified, userInfo.emailVerified) && Objects.equals(password, userInfo.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, signature, nickName, emailVerified, password);
     }
 }

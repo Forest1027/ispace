@@ -9,6 +9,7 @@ import com.ispace.articlemanagement.repository.custom.CommonCustomRepository;
 import com.ispace.articlemanagement.utils.EntityDtoConvertUtil;
 import com.ispace.articlemanagement.utils.JwtUtil;
 import com.ispace.shared.entity.UserInfo;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
@@ -33,7 +35,6 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<ArticleDTO> getArticleList(int page, int size) {
         List<ArticleDetail> articleDetails = articleDetailRepository.getArticleBrief(Pageable.ofSize(size).withPage(page));
-        System.out.println(articleDetails.size());
         return articleDetails.stream()
                 .map(articleDetail -> {
                     UserInfo author = articleDetail.getAuthor();
@@ -70,7 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDTO createArticle(ArticleDTO articleDTO, String idToken) {
-        String email = JwtUtil.getCurrentUserPayload(idToken).get("email").toString();
+        String email = JwtUtil.getCurrentUserEmailFromAuthorization(idToken);
         articleDTO.setAuthorEmail(email);
         ArticleDetail articleDetail = EntityDtoConvertUtil.convertArticleDTOToEntity(articleDTO);
         articleDetail = articleDetailRepository.saveAndFlush(articleDetail);
@@ -85,7 +86,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
         Optional<ArticleDetail> article = articleDetailRepository.findById(articleDTO.getId());
         if (article.isPresent()) {
-            articleDTO.setAuthorEmail(JwtUtil.getCurrentUserPayload(idToken).get("email").toString());
+            articleDTO.setAuthorEmail(JwtUtil.getCurrentUserEmailFromAuthorization(idToken));
             ArticleDetail entity = EntityDtoConvertUtil.convertArticleDTOToEntity(articleDTO);
             articleDetailRepository.save(entity);
         } else {
@@ -108,7 +109,7 @@ public class ArticleServiceImpl implements ArticleService {
             throw new RuntimeException("Can't verify user's identity");
         }
         Optional<ArticleDetail> result = articleDetailRepository.findById(id);
-        String email = JwtUtil.getCurrentUserPayload(token).get("email").toString();
+        String email = JwtUtil.getCurrentUserEmailFromAuthorization(token);
         if (result.isPresent()) {
             return result.get().getAuthor().getEmail().equals(email);
         } else {

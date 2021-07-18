@@ -17,4 +17,10 @@ public class JwtUtil {
         return new JSONObject(userInfo[1]);
     }
 
+    public static String getCurrentUserEmailFromAuthorization(String token) {
+        String[] strings = token.split(" ");
+        String[] results = decodeJwtToken(strings[1]);
+        return new JSONObject(results[1]).get("sub").toString();
+    }
+
 }
