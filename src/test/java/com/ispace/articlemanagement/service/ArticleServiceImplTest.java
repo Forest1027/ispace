@@ -74,9 +74,7 @@ class ArticleServiceImplTest {
     @Test
     void canGetArticleById() {
         // given
-        ArticleDetail articleDetail = new ArticleDetail();
-        articleDetail.setTitle("test");
-        articleDetail.setAuthor(getUserInfo(validEmail));
+        ArticleDetail articleDetail = new ArticleDetail.Builder().withTitle("test").withAuthor(getUserInfo(validEmail)).build();
         given(articleDetailRepository.findById(anyInt())).willReturn(Optional.of(articleDetail));
         // when
         // then
@@ -162,10 +160,7 @@ class ArticleServiceImplTest {
     }
 
     private static ArticleDTO getArticleDTO(String email) {
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setTitle("test");
-        articleDTO.setAuthorEmail(email);
-        return articleDTO;
+        return new ArticleDTO.Builder().withTitle("test").withAuthorEmail(email).build();
     }
 
     private static UserInfo getUserInfo(String email) {

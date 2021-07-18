@@ -11,9 +11,11 @@ public class EntityDtoConvertUtil {
         } else {
             UserInfo author = articleDetail.getAuthor();
             String authorName = (author.getNickName() == null || author.getNickName().isEmpty()) ? author.getFirstName() + " " + author.getLastName() : author.getNickName();
-            return new ArticleDTO(articleDetail.getId(), articleDetail.getTitle(),
-                    articleDetail.getDescription(), articleDetail.getContent(),
-                    articleDetail.getArticleCategory(), author.getId(), authorName, author.getEmail(), articleDetail.getCreateTime(), articleDetail.getUpdateTime());
+            return new ArticleDTO.Builder().withId(articleDetail.getId()).withTitle(articleDetail.getTitle())
+                    .withDescription(articleDetail.getDescription()).withContent(articleDetail.getContent())
+                    .withArticleCategory(articleDetail.getArticleCategory()).withAuthorId(author.getId())
+                    .withAuthorName(authorName).withAuthorEmail(author.getEmail())
+                    .withUpdateTime(articleDetail.getUpdateTime()).withCreateTime(articleDetail.getCreateTime()).build();
         }
     }
 
@@ -23,9 +25,9 @@ public class EntityDtoConvertUtil {
         } else {
             UserInfo author = new UserInfo();
             author.setEmail(articleDTO.getAuthorEmail());
-            ArticleDetail result = new ArticleDetail(articleDTO.getId(), articleDTO.getTitle(), articleDTO.getDescription(), articleDTO.getArticleCategory(), author, articleDTO.getCreateTime(), articleDTO.getUpdateTime());
-            result.setContent(articleDTO.getContent());
-            return result;
+            return new ArticleDetail.Builder().withId(articleDTO.getId()).withTitle(articleDTO.getTitle())
+                    .withDescription(articleDTO.getDescription()).withArticleCategory(articleDTO.getArticleCategory()).withContent(articleDTO.getContent())
+                    .withAuthor(author).withCreateTime(articleDTO.getCreateTime()).withUpdateTime(articleDTO.getUpdateTime()).build();
         }
     }
 }

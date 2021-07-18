@@ -39,18 +39,11 @@ public class ArticleServiceImpl implements ArticleService {
                 .map(articleDetail -> {
                     UserInfo author = articleDetail.getAuthor();
                     String authorName = author.getNickName().isEmpty() ? author.getFirstName() + " " + author.getLastName() : author.getNickName();
-                    return new ArticleDTO(
-                            articleDetail.getId(),
-                            articleDetail.getTitle(),
-                            articleDetail.getDescription(),
-                            articleDetail.getContent(),
-                            articleDetail.getArticleCategory(),
-                            author.getId(),
-                            authorName,
-                            author.getEmail(),
-                            articleDetail.getCreateTime(),
-                            articleDetail.getUpdateTime()
-                    );
+                    return new ArticleDTO.Builder().withId(articleDetail.getId()).withTitle(articleDetail.getTitle())
+                            .withDescription(articleDetail.getDescription()).withContent(articleDetail.getContent())
+                            .withArticleCategory(articleDetail.getArticleCategory()).withAuthorId(author.getId())
+                            .withAuthorName(authorName).withAuthorEmail(author.getEmail())
+                            .withCreateTime(articleDetail.getCreateTime()).withUpdateTime(articleDetail.getUpdateTime()).build();
                 }).collect(Collectors.toList());
     }
 

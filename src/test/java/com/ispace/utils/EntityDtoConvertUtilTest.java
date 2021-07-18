@@ -51,13 +51,8 @@ class EntityDtoConvertUtilTest {
     }
 
     private static ArticleDTO getArticleDTO() {
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setTitle(title);
-        articleDTO.setDescription(description);
-        articleDTO.setContent(content);
-        articleDTO.setAuthorName(authorName);
-        articleDTO.setAuthorEmail(authorEmail);
-        return articleDTO;
+        return new ArticleDTO.Builder().withTitle(title).withDescription(description).withContent(content)
+                .withAuthorName(authorName).withAuthorEmail(authorEmail).build();
     }
 
     private static UserInfo getUserInfo(String email, String firstName, String lastName) {
@@ -69,11 +64,7 @@ class EntityDtoConvertUtilTest {
     }
 
     private static ArticleDetail getArticleDetail() {
-        ArticleDetail articleDetail = new ArticleDetail();
-        articleDetail.setTitle(title);
-        articleDetail.setDescription(description);
-        articleDetail.setContent(content);
-        articleDetail.setAuthor(getUserInfo(authorEmail, firstName, lastName));
-        return articleDetail;
+        return new ArticleDetail.Builder().withTitle(title).withDescription(description)
+                .withContent(content).withAuthor(getUserInfo(authorEmail, firstName, lastName)).build();
     }
 }

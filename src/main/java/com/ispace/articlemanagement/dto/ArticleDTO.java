@@ -1,6 +1,7 @@
 package com.ispace.articlemanagement.dto;
 
 import com.ispace.articlemanagement.entity.ArticleCategory;
+import com.ispace.articlemanagement.entity.ArticleDetail;
 
 import java.util.Date;
 
@@ -27,19 +28,6 @@ public class ArticleDTO {
     private Date updateTime;
 
     public ArticleDTO() {
-    }
-
-    public ArticleDTO(int id, String title, String description, String content, ArticleCategory articleCategory, Integer authorId, String authorName, String authorEmail, Date createTime, Date updateTime) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.content = content;
-        this.articleCategory = articleCategory;
-        this.authorId = authorId;
-        this.authorName = authorName;
-        this.authorEmail = authorEmail;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
     }
 
     public int getId() {
@@ -120,5 +108,84 @@ public class ArticleDTO {
 
     public void setAuthorEmail(String authorEmail) {
         this.authorEmail = authorEmail;
+    }
+
+    public static class Builder {
+        private int id;
+        private String title;
+        private String description;
+        private String content;
+        private ArticleCategory articleCategory;
+        private Integer authorId;
+        private String authorName;
+        private String authorEmail;
+        private Date createTime;
+        private Date updateTime;
+
+        public Builder withId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder withDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder withContent(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public Builder withArticleCategory(ArticleCategory articleCategory) {
+            this.articleCategory = articleCategory;
+            return this;
+        }
+
+        public Builder withAuthorId(Integer authorId) {
+            this.authorId = authorId;
+            return this;
+        }
+
+        public Builder withAuthorName(String authorName) {
+            this.authorName = authorName;
+            return this;
+        }
+
+        public Builder withAuthorEmail(String authorEmail) {
+            this.authorEmail = authorEmail;
+            return this;
+        }
+
+        public Builder withCreateTime(Date createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Builder withUpdateTime(Date updateTime) {
+            this.updateTime = updateTime;
+            return this;
+        }
+
+        public ArticleDTO build() {
+            ArticleDTO articleDTO = new ArticleDTO();
+            articleDTO.setId(id);
+            articleDTO.setTitle(title);
+            articleDTO.setDescription(description);
+            articleDTO.setContent(content);
+            articleDTO.setAuthorId(authorId);
+            articleDTO.setAuthorName(authorName);
+            articleDTO.setAuthorEmail(authorEmail);
+            articleDTO.setArticleCategory(articleCategory);
+            articleDTO.setCreateTime(createTime);
+            articleDTO.setUpdateTime(updateTime);
+            return articleDTO;
+        }
+
     }
 }

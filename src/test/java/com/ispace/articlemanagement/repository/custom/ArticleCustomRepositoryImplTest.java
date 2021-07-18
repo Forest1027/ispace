@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ArticleCustomRepositoryImplTest {
@@ -38,8 +37,9 @@ class ArticleCustomRepositoryImplTest {
         UserInfo userInfo = new UserInfo();
         userInfo.setEmail("test@gmail.com");
         userInfoRepository.saveAndFlush(userInfo);
-        ArticleDetail articleDetail = new ArticleDetail(1, "title", "description", articleCategory, userInfo, new Date(), new Date());
-        articleDetail.setContent("content");
+        ArticleDetail articleDetail = new ArticleDetail.Builder().withId(1).withTitle("title")
+                .withDescription("description").withArticleCategory(articleCategory).withContent("content")
+                .withAuthor(userInfo).withCreateTime(new Date()).withUpdateTime(new Date()).build();
         underTest.saveAndFlush(articleDetail);
         // when
         List<ArticleDetail> articles = underTest.getArticleBrief(Pageable.ofSize(10).withPage(0));

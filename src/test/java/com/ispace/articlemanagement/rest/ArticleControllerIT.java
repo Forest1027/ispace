@@ -64,10 +64,7 @@ class ArticleControllerIT {
 
 
     private static ArticleDTO getArticleDTO(String email) {
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setTitle("test");
-        articleDTO.setAuthorEmail(email);
-        return articleDTO;
+        return new ArticleDTO.Builder().withTitle("test").withAuthorEmail(email).build();
     }
 
     private static UserInfo getUserInfo(String email) {

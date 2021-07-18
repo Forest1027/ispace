@@ -160,4 +160,77 @@ public class ArticleDetail {
     public int hashCode() {
         return Objects.hash(id, title, description, content, articleCategory, tag, author, createTime, updateTime);
     }
+
+    public static class Builder {
+        private int id;
+        private String title;
+        private String description;
+        private String content;
+        private ArticleCategory articleCategory;
+        private String tag;
+        private UserInfo author;
+        private Date createTime;
+        private Date updateTime;
+
+        public Builder withId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder withDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder withContent(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public Builder withArticleCategory(ArticleCategory articleCategory) {
+            this.articleCategory = articleCategory;
+            return this;
+        }
+
+        public Builder withTag(String tag) {
+            this.tag = tag;
+            return this;
+        }
+
+        public Builder withAuthor(UserInfo author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder withCreateTime(Date createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Builder withUpdateTime(Date updateTime) {
+            this.updateTime = updateTime;
+            return this;
+        }
+
+        public ArticleDetail build() {
+            ArticleDetail articleDetail = new ArticleDetail();
+            articleDetail.setId(id);
+            articleDetail.setTitle(title);
+            articleDetail.setContent(content);
+            articleDetail.setDescription(description);
+            articleDetail.setAuthor(author);
+            articleDetail.setArticleCategory(articleCategory);
+            articleDetail.setTag(tag);
+            articleDetail.setUpdateTime(updateTime);
+            articleDetail.setCreateTime(createTime);
+            return articleDetail;
+        }
+
+    }
+
 }
