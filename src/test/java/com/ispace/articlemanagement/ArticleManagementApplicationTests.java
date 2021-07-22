@@ -1,6 +1,6 @@
 package com.ispace.articlemanagement;
 
-import com.ispace.articlemanagement.rest.ArticleController;
+import com.ispace.rest.ArticleController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
