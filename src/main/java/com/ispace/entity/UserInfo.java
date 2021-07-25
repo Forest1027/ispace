@@ -20,7 +20,6 @@ public class UserInfo {
     private String lastName;
 
     @Column(name = "email")
-    @NotNull
     @Email
     private String email;
 
@@ -28,7 +27,6 @@ public class UserInfo {
     private String signature;
 
     @Column(name = "nickname")
-    @NotNull
     private String nickName;
 
     @Column(name = "email_verified")

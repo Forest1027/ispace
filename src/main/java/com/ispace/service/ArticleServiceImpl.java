@@ -48,7 +48,7 @@ public class ArticleServiceImpl implements ArticleService {
                     return new ArticleDTO.Builder().withId(articleDetail.getId()).withTitle(articleDetail.getTitle())
                             .withDescription(articleDetail.getDescription()).withContent(articleDetail.getContent())
                             .withArticleCategory(articleDetail.getArticleCategory()).withAuthorId(author.getId())
-                            .withAuthorName(authorName).withAuthorEmail(author.getEmail())
+                            .withAuthorName(authorName)
                             .withCreateTime(articleDetail.getCreateTime()).withUpdateTime(articleDetail.getUpdateTime()).build();
                 }).collect(Collectors.toList());
     }
@@ -62,7 +62,9 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDTO getArticleById(int id) {
         Optional<ArticleDetail> result = articleDetailRepository.findById(id);
         if (result.isPresent()) {
-            return EntityDtoConvertUtil.convertArticleEntityToDTO(result.get());
+            ArticleDTO articleDTO = EntityDtoConvertUtil.convertArticleEntityToDTO(result.get());
+            articleDTO.setAuthorEmail("");
+            return articleDTO;
         } else {
             throw new RuntimeException("The article with id " + id + " is not found");
         }
