@@ -1,8 +1,8 @@
 package com.ispace.utils;
 
-import com.ispace.articlemanagement.dto.ArticleDTO;
-import com.ispace.articlemanagement.entity.ArticleDetail;
-import com.ispace.usermanagement.entity.UserInfo;
+import com.ispace.dto.ArticleDTO;
+import com.ispace.entity.ArticleDetail;
+import com.ispace.entity.UserInfo;
 
 public class EntityDtoConvertUtil {
     public static ArticleDTO convertArticleEntityToDTO(ArticleDetail articleDetail) {

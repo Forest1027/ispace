@@ -2,9 +2,8 @@ package com.ispace.utils;
 
 import com.ispace.constants.OktaApiConstants;
 import com.ispace.constants.OktaConfigConstants;
-import com.ispace.usermanagement.entity.UserInfo;
+import com.ispace.entity.UserInfo;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.http.HttpResponse;
 
