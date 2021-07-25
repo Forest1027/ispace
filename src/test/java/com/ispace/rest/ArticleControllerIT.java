@@ -36,7 +36,7 @@ class ArticleControllerIT {
     }
 
     @Test
-    void cnaGetArticleByIdNotFound() throws Exception {
+    void canGetArticleByIdNotFound() throws Exception {
         this.mockMvc.perform(get("/articleManagement/v1/articles/1")).andDo(print()).andExpect(status().isBadRequest()).andExpect(content().string(containsString("not found")));
     }
 

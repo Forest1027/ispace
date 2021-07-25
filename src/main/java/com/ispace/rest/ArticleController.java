@@ -17,8 +17,8 @@ public class ArticleController {
     private ArticleService articleService;
 
     @GetMapping("/v1/articles")
-    public ResponseEntity<List<ArticleDTO>> getArticleList(@RequestParam int page, @RequestParam int size) {
-        return new ResponseEntity<>(articleService.getArticleList(page, size), HttpStatus.OK);
+    public ResponseEntity<List<ArticleDTO>> getArticleList(@RequestParam int page, @RequestParam int size, @RequestParam(required = false) String search) {
+        return new ResponseEntity<>(articleService.getArticleList(page, size, search), HttpStatus.OK);
     }
 
     @GetMapping("/v1/articleCategories")

@@ -1,4 +1,4 @@
-package com.ispace.pojo;
+package com.ispace.search;
 
 public class SearchCriteria {
     private String key;
@@ -26,6 +26,12 @@ public class SearchCriteria {
     }
 
     public void setValue(Object value) {
+        this.value = value;
+    }
+
+    public SearchCriteria(String key, String operation, Object value) {
+        this.key = key;
+        this.operation = operation;
         this.value = value;
     }
 }

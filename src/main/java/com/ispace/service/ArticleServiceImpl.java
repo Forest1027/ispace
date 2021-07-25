@@ -6,16 +6,21 @@ import com.ispace.dto.ArticleDTO;
 import com.ispace.entity.ArticleCategory;
 import com.ispace.entity.ArticleDetail;
 import com.ispace.repository.custom.CommonCustomRepository;
+import com.ispace.search.SearchCriteria;
 import com.ispace.utils.EntityDtoConvertUtil;
 import com.ispace.utils.JwtUtil;
 import com.ispace.entity.UserInfo;
+import com.ispace.utils.SearchUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,8 +38,9 @@ public class ArticleServiceImpl implements ArticleService {
     private CommonCustomRepository<ArticleDetail> customRepository;
 
     @Override
-    public List<ArticleDTO> getArticleList(int page, int size) {
-        List<ArticleDetail> articleDetails = articleDetailRepository.getArticleBrief(Pageable.ofSize(size).withPage(page));
+    public List<ArticleDTO> getArticleList(int page, int size, String search) {
+        List<SearchCriteria> params = SearchUtil.extractSearchCriteria(search);
+        List<ArticleDetail> articleDetails = articleDetailRepository.getArticleBrief(Pageable.ofSize(size).withPage(page), params);
         return articleDetails.stream()
                 .map(articleDetail -> {
                     UserInfo author = articleDetail.getAuthor();

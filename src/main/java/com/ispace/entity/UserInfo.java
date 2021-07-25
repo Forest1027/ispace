@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "isp_user_info")
 public class UserInfo {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
@@ -18,7 +19,6 @@ public class UserInfo {
     @Column(name = "last_name")
     private String lastName;
 
-    @Id
     @Column(name = "email")
     @NotNull
     @Email

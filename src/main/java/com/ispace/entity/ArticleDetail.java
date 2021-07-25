@@ -36,7 +36,7 @@ public class ArticleDetail {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "author_email", referencedColumnName = "email")
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     private UserInfo author;
 
     @CreationTimestamp

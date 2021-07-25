@@ -5,6 +5,7 @@ import com.ispace.entity.ArticleDetail;
 import com.ispace.repository.ArticleCategoryRepository;
 import com.ispace.repository.ArticleDetailRepository;
 import com.ispace.repository.custom.CommonCustomRepository;
+import com.ispace.search.SearchCriteria;
 import com.ispace.utils.EntityDtoConvertUtil;
 import com.ispace.entity.UserInfo;
 import com.ispace.repository.UserInfoRepository;
@@ -15,6 +16,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,11 +57,14 @@ class ArticleServiceImplTest {
     @Test
     void canGetArticleList() {
         // when
-        int page = 0;
+        int page = 1;
         int size = 10;
-        underTest.getArticleList(page, size);
+        String search = "authorEmail=="+validEmail;
+        underTest.getArticleList(page, size, search);
         // then
-        verify(articleDetailRepository).getArticleBrief(Pageable.ofSize(size).withPage(page));
+        ArgumentCaptor<List<SearchCriteria>> paramArgumentCaptor = ArgumentCaptor.forClass(List.class);
+        ArgumentCaptor<Pageable> pageableArgumentCaptor = ArgumentCaptor.forClass(Pageable.class);
+        verify(articleDetailRepository).getArticleBrief(pageableArgumentCaptor.capture(), paramArgumentCaptor.capture());
     }
 
     @Test

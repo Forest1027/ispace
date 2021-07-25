@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExceptionHandler {
 
-    @Around("execution(* com.ispace.*.rest.*.*(..))")
+    @Around("execution(* com.ispace.rest.*.*(..))")
     public Object handleGlobalException(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         try {
             return proceedingJoinPoint.proceed();
