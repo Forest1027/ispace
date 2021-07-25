@@ -34,4 +34,13 @@ public class SearchCriteria {
         this.operation = operation;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "SearchCriteria{" +
+                "key='" + key + '\'' +
+                ", operation='" + operation + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }
