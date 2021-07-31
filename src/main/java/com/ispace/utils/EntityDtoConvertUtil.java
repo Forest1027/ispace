@@ -24,6 +24,7 @@ public class EntityDtoConvertUtil {
             return null;
         } else {
             UserInfo author = new UserInfo();
+            author.setId(articleDTO.getAuthorId());
             author.setEmail(articleDTO.getAuthorEmail());
             return new ArticleDetail.Builder().withId(articleDTO.getId()).withTitle(articleDTO.getTitle())
                     .withDescription(articleDTO.getDescription()).withArticleCategory(articleDTO.getArticleCategory()).withContent(articleDTO.getContent())

@@ -22,7 +22,7 @@ public class UserInfoController {
     }
 
     @GetMapping("/v1/users/{userId}")
-    public ResponseEntity getUserInfoById(@PathVariable String userId) {
+    public ResponseEntity getUserInfoById(@PathVariable int userId) {
         return new ResponseEntity(userInfoService.findUserInfoById(userId), HttpStatus.OK);
     }
 
@@ -32,7 +32,7 @@ public class UserInfoController {
     }
 
     @DeleteMapping("/v1/users/{userId}")
-    public ResponseEntity deleteUserInfoById(@PathVariable String userId) {
+    public ResponseEntity deleteUserInfoById(@PathVariable int userId) {
         userInfoService.deleteUserInfoById(userId);
         return new ResponseEntity("Delete successfully", HttpStatus.OK);
     }

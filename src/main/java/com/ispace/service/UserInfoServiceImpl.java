@@ -21,7 +21,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public Optional<UserInfo> findUserInfoById(String userId) {
+    public Optional<UserInfo> findUserInfoById(int userId) {
         return userInfoRepository.findById(userId);
     }
 
@@ -46,7 +46,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public void deleteUserInfoById(String userId) {
+    public void deleteUserInfoById(int userId) {
         userInfoRepository.deleteById(userId);
     }
 }

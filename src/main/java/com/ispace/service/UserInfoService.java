@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UserInfoService {
     void updateEmailVerified(int userId, boolean status);
 
-    Optional<UserInfo> findUserInfoById(String userId);
+    Optional<UserInfo> findUserInfoById(int userId);
 
     UserInfo updateUserInfo(UserInfo userInfo);
 
@@ -17,5 +17,5 @@ public interface UserInfoService {
 
     List<UserInfo> getUsers();
 
-    void deleteUserInfoById(String userId);
+    void deleteUserInfoById(int userId);
 }
