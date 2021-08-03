@@ -187,4 +187,20 @@ public class ArticleDTO {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "ArticleDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", content='" + content + '\'' +
+                ", articleCategory=" + articleCategory +
+                ", authorId=" + authorId +
+                ", authorName='" + authorName + '\'' +
+                ", authorEmail='" + authorEmail + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }
