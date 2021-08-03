@@ -18,13 +18,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 @Service
 @Transactional
@@ -65,8 +64,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Map<ArticleCategory, List<ArticleCategory>> getArticleCategoryListHierarchy() {
-        return null;
+    public Map<String, List<ArticleCategory>> getArticleCategoryListHierarchy() {
+        List<ArticleCategory> categories = articleCategoryRepository.findAll();
+        Map<String, List<ArticleCategory>> result = new HashMap<>();
+        Map<Integer, List<ArticleCategory>> groups = categories.stream().filter(articleCategory -> articleCategory.getParentCategoryId() != null).collect(groupingBy(ArticleCategory::getParentCategoryId));
+        categories.stream()
+                .filter(articleCategory -> articleCategory.getParentCategoryId() == null)
+                .forEach(articleCategory -> result.put(articleCategory.getCategoryName(), groups.get(articleCategory.getId())));
+        return result;
     }
 
     @Override

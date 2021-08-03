@@ -28,7 +28,7 @@ public class ArticleController {
     }
 
     @GetMapping("/v1/articleCategories/hierarchy")
-    public ResponseEntity<Map<ArticleCategory, List<ArticleCategory>>> getArticleCategoryListHierarchy() {
+    public ResponseEntity<Map<String, List<ArticleCategory>>> getArticleCategoryListHierarchy() {
         return new ResponseEntity<>(articleService.getArticleCategoryListHierarchy(), HttpStatus.OK);
     }
 

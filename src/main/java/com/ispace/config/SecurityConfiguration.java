@@ -19,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/webjars/**",
             "/swagger-ui/**",
             "/articleManagement/v1/articleCategories",
+            "/articleManagement/v1/articleCategories/hierarchy",
             "/userManagement/v1/users/register"
     };
 

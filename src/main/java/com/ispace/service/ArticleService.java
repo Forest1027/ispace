@@ -12,7 +12,7 @@ public interface ArticleService {
 
     List<ArticleCategory> getArticleCategoryList(int page, int size);
 
-    Map<ArticleCategory, List<ArticleCategory>> getArticleCategoryListHierarchy();
+    Map<String, List<ArticleCategory>> getArticleCategoryListHierarchy();
 
     ArticleDTO getArticleById(int id);
 
