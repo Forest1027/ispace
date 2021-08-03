@@ -27,3 +27,8 @@ logging:
   level:
     root: INFO
     com.ispace: DEBUG
+  file:
+    name: log/ISpace.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: ISpace-%d{dd-MM-yyyy}.%i.log
