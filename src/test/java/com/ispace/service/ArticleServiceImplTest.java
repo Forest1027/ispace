@@ -51,7 +51,7 @@ class ArticleServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        underTest = new ArticleServiceImpl(articleDetailRepository, articleCategoryRepository, commonCustomRepository);
+        underTest = new ArticleServiceImpl(articleDetailRepository, articleCategoryRepository, commonCustomRepository, userInfoRepository);
     }
 
     @Test
@@ -163,6 +163,26 @@ class ArticleServiceImplTest {
         // when
         // then
         assertThatThrownBy(() -> underTest.deleteArticleById(1, idToken)).isInstanceOf(RuntimeException.class).hasMessageContaining("Current user is not the author of the article");
+    }
+
+    @Test
+    void canCheckArticleCountByAuthor() {
+        // given
+        ArticleDTO articleDTO = getArticleDTO(validEmail);
+        // when
+        underTest.getArticleCountByAuthor(validEmail, idToken);
+        // then
+        ArgumentCaptor<ArticleDetail> articleDetailArgumentCaptor = ArgumentCaptor.forClass(ArticleDetail.class);
+        verify(articleDetailRepository).getArticleCountByAuthor(validEmail);
+    }
+
+    @Test
+    void willThrowWhenEmailNotMatchQueriedByEmail() {
+        // given
+        String email = "invalid@gmail.com";
+        // when
+        // then
+        assertThatThrownBy(() -> underTest.getArticleCountByAuthor(email, idToken)).isInstanceOf(RuntimeException.class).hasMessageContaining("Current user is not the author of the article");
     }
 
     private static ArticleDTO getArticleDTO(String email) {

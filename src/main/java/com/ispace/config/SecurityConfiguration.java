@@ -19,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/webjars/**",
             "/swagger-ui/**",
             "/articleManagement/v1/articleCategories",
+            "/articleManagement/v1/articleCategories/hierarchy",
             "/userManagement/v1/users/register"
     };
 
@@ -44,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS");
             }
         };
     }

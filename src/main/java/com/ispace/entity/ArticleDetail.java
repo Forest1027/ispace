@@ -34,7 +34,6 @@ public class ArticleDetail {
     @Column(name = "tag")
     private String tag;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private UserInfo author;

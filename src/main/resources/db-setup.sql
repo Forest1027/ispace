@@ -16,7 +16,7 @@ CREATE TABLE `isp_user_info` (
   `signature` varchar(45) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
   `email_verified` boolean DEFAULT false,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -40,9 +40,9 @@ CREATE TABLE `isp_article_detail` (
   `title` varchar(120) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
   `content` longtext NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT 26,
   `tag` varchar(60) DEFAULT NULL,
-  `author_id` int(11) NOT NULL,
+  `author_id` int(11) DEFAULT NULL,
   `create_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime Not Null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -74,13 +74,11 @@ INSERT INTO `isp_article_category` VALUES
     (17,'Style',11),
     (18,'Travel',11),
     (19,'Sports',11),
-    (20,'Other',11),
     (21,'Health',null),
     (22,'Addiction',21),
     (23,'Cornavirus',21),
     (24,'Fitness',21),
     (25,'Mental Health',21),
-    (26,'Other',21),
     (27,'Industry',null),
     (28,'Business',27),
     (29,'Design',27),
@@ -88,20 +86,18 @@ INSERT INTO `isp_article_category` VALUES
     (31,'Leadership',27),
     (32,'Marketing',27),
     (33,'Work',27),
-    (34,'Other',27),
     (35,'Personal Development',null),
     (36,'Creativity',35),
     (37,'Mindfulness',35),
     (38,'Money',35),
     (39,'Productivity',35),
-    (40,'Other',35),
     (41,'Society',null),
     (42,'History',41),
     (43,'Cities',41),
     (44,'Social Media',41),
     (45,'Religion',41),
     (46,'Education',41),
-    (47,'Other',41),
-    (48,'Other',null)
+    (48,'Other',null),
+    (49, 'Other', 48)
     ;
 

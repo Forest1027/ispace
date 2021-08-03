@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/articleManagement")
@@ -24,6 +25,11 @@ public class ArticleController {
     @GetMapping("/v1/articleCategories")
     public ResponseEntity<List<ArticleCategory>> getArticleCategoryList(@RequestParam int page, @RequestParam int size) {
         return new ResponseEntity<>(articleService.getArticleCategoryList(page, size), HttpStatus.OK);
+    }
+
+    @GetMapping("/v1/articleCategories/hierarchy")
+    public ResponseEntity<Map<String, List<ArticleCategory>>> getArticleCategoryListHierarchy() {
+        return new ResponseEntity<>(articleService.getArticleCategoryListHierarchy(), HttpStatus.OK);
     }
 
     @GetMapping("/v1/articles/{id}")
@@ -44,6 +50,11 @@ public class ArticleController {
     @DeleteMapping("/v1/articles/{id}")
     public ResponseEntity<String> deleteArticleById(@PathVariable int id, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.deleteArticleById(id, idToken), HttpStatus.OK);
+    }
+
+    @GetMapping("/v1/articles/count/{email}")
+    public ResponseEntity<Integer> getArticleCountByAuthor(@PathVariable String email, @RequestHeader(name="Authorization", required = false) String idToken) {
+        return new ResponseEntity<>(articleService.getArticleCountByAuthor(email, idToken), HttpStatus.OK);
     }
 
 }
