@@ -23,3 +23,7 @@ constants:
     api_paths:
       create_user_with_password: /api/v1/users?activate=true
 
+logging:
+  level:
+    root: INFO
+    com.ispace: DEBUG
