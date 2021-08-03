@@ -1,0 +1,30 @@
+okta:
+  oauth2:
+    issuer: https://dev-83250362.okta.com/oauth2/default
+#
+# JDBC properties
+#
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ispace_dev?useSSL=false&serverTimezone=Europe/Dublin
+    username: ${db_username}
+    password: ${db_password}
+    driver-class-name: com.mysql.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+
+constants:
+  okta:
+    base_url: https://dev-83250362.okta.com
+    api_paths:
+      create_user_with_password: /api/v1/users?activate=true
+
+logging:
+  level:
+    root: INFO
+    com.ispace: INFO
+  file:
+    name: log/ISpace.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: ISpace-%d{dd-MM-yyyy}.%i.log
