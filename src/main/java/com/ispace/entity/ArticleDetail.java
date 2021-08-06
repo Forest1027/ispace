@@ -18,7 +18,6 @@ public class ArticleDetail {
     private int id;
 
     @Column(name = "title")
-    @NotNull
     private String title;
 
     @Column(name = "description")

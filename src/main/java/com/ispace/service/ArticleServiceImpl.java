@@ -17,10 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -109,7 +106,7 @@ public class ArticleServiceImpl implements ArticleService {
             articleDetail.setTitle(articleDTO.getTitle());
             articleDetail.setDescription(articleDTO.getDescription());
             articleDetail.setContent(articleDTO.getContent());
-            articleDetail.setArticleCategory(articleDetail.getArticleCategory());
+            articleDetail.setArticleCategory(articleDTO.getArticleCategory());
         } else {
             throw new RuntimeException("The article with id " + articleDTO.getId() + " is not found");
         }

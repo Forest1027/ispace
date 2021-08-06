@@ -10,11 +10,11 @@ DROP TABLE IF EXISTS `isp_user_info`;
 
 CREATE TABLE `isp_user_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `signature` varchar(45) DEFAULT NULL,
-  `nickname` varchar(45) NOT NULL,
+  `nickname` varchar(45) DEFAULT NULL,
   `email_verified` boolean DEFAULT false,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

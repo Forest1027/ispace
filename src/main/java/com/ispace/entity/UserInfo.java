@@ -2,6 +2,7 @@ package com.ispace.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -13,14 +14,20 @@ public class UserInfo {
     @Column(name = "id")
     private Integer id;
 
+    @NotNull(message = "First name is required")
+    @NotBlank(message = "First name is required")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotNull(message = "Last name is required")
+    @NotBlank(message = "Last name is required")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotNull(message = "Email is required")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email format is invalid")
     @Column(name = "email")
-    @Email
     private String email;
 
     @Column(name = "signature")
@@ -32,6 +39,8 @@ public class UserInfo {
     @Column(name = "email_verified")
     private Boolean emailVerified;
 
+    @NotNull(message = "Password is required")
+    @NotBlank(message = "Password is required")
     @Transient
     private String password;
 

@@ -10,20 +10,20 @@ public class ArticleCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    @NotNull(message = "Category is required")
+    private Integer id;
 
     @Column(name = "category_name")
-    @NotNull
     private String categoryName;
 
     @Column(name = "parent_category_id")
     private Integer parentCategoryId;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

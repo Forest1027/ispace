@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ispace.service.UserInfoService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/userManagement")
 public class UserInfoController {
@@ -38,7 +40,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/v1/users/register")
-    public ResponseEntity createUserInfo(@RequestBody UserInfo userInfo) throws Exception {
+    public ResponseEntity createUserInfo(@Valid @RequestBody UserInfo userInfo) throws Exception {
         userInfo.setId(null);
         userInfo.setEmailVerified(false);
         UserInfo createdUser = userInfoService.createUserInfo(userInfo);
