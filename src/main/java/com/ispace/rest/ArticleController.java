@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -38,12 +39,12 @@ public class ArticleController {
     }
 
     @PostMapping("/v1/articles")
-    public ResponseEntity<ArticleDTO> createArticle(@RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
+    public ResponseEntity<ArticleDTO> createArticle(@Valid @RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.createArticle(articleDTO, idToken), HttpStatus.OK);
     }
 
     @PutMapping("/v1/articles")
-    public ResponseEntity<ArticleDTO> updateArticle(@RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
+    public ResponseEntity<ArticleDTO> updateArticle(@Valid @RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.updateArticle(articleDTO, idToken), HttpStatus.OK);
     }
 

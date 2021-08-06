@@ -2,18 +2,28 @@ package com.ispace.dto;
 
 import com.ispace.entity.ArticleCategory;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class ArticleDTO {
 
     private int id;
 
+    @NotNull(message = "Title is required")
+    @NotBlank(message = "Title is required")
     private String title;
 
+    @NotNull(message = "Description is required")
+    @NotBlank(message = "Description is required")
     private String description;
 
+    @NotNull(message = "Content is required")
+    @NotBlank(message = "Content is required")
     private String content;
 
+    @Valid
     private ArticleCategory articleCategory;
 
     private Integer authorId;
