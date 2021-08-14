@@ -26,8 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ArticleServiceImplTest {
@@ -101,6 +100,7 @@ class ArticleServiceImplTest {
     void canCreateArticle() {
         // given
         ArticleDTO articleDTO = getArticleDTO(validEmail);
+        given(userInfoRepository.findByEmail(any())).willReturn(getUserInfo(validEmail));
         // when
         underTest.createArticle(articleDTO, idToken);
         // then
@@ -119,10 +119,7 @@ class ArticleServiceImplTest {
         // when
         underTest.updateArticle(articleDTO, idToken);
         // then
-        ArgumentCaptor<ArticleDetail> articleDetailArgumentCaptor = ArgumentCaptor.forClass(ArticleDetail.class);
-        verify(articleDetailRepository).save(articleDetailArgumentCaptor.capture());
-        ArticleDetail captured = articleDetailArgumentCaptor.getValue();
-        assertThat(captured).isEqualTo(articleDetail1);
+        verify(articleDetailRepository, times(2)).findById(anyInt());
     }
 
     @Test

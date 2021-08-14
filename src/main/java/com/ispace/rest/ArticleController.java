@@ -3,9 +3,12 @@ package com.ispace.rest;
 import com.ispace.dto.ArticleDTO;
 import com.ispace.entity.ArticleCategory;
 import com.ispace.service.ArticleService;
+import com.ispace.validgroups.CreateArticle;
+import com.ispace.validgroups.UpdateArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,12 +42,12 @@ public class ArticleController {
     }
 
     @PostMapping("/v1/articles")
-    public ResponseEntity<ArticleDTO> createArticle(@Valid @RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
+    public ResponseEntity<ArticleDTO> createArticle(@Validated(CreateArticle.class) @RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.createArticle(articleDTO, idToken), HttpStatus.OK);
     }
 
     @PutMapping("/v1/articles")
-    public ResponseEntity<ArticleDTO> updateArticle(@Valid @RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
+    public ResponseEntity<ArticleDTO> updateArticle(@Validated(UpdateArticle.class) @RequestBody ArticleDTO articleDTO, @RequestHeader(name="Authorization", required = false) String idToken) {
         return new ResponseEntity<>(articleService.updateArticle(articleDTO, idToken), HttpStatus.OK);
     }
 

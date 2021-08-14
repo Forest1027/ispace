@@ -1,5 +1,8 @@
 package com.ispace.entity;
 
+import com.ispace.validgroups.CreateArticle;
+import com.ispace.validgroups.UpdateArticle;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -10,7 +13,7 @@ public class ArticleCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @NotNull(message = "Category is required")
+    @NotNull(message = "Category is required", groups = {CreateArticle.class, UpdateArticle.class})
     private Integer id;
 
     @Column(name = "category_name")
@@ -57,7 +60,7 @@ public class ArticleCategory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ArticleCategory that = (ArticleCategory) o;
-        return id == that.id && Objects.equals(categoryName, that.categoryName) && Objects.equals(parentCategoryId, that.parentCategoryId);
+        return id.equals(that.id) && Objects.equals(categoryName, that.categoryName) && Objects.equals(parentCategoryId, that.parentCategoryId);
     }
 
     @Override

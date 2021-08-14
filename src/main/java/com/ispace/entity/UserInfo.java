@@ -1,5 +1,8 @@
 package com.ispace.entity;
 
+import com.ispace.validgroups.CreateUser;
+import com.ispace.validgroups.UpdateUser;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -14,18 +17,18 @@ public class UserInfo {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull(message = "First name is required")
-    @NotBlank(message = "First name is required")
+    @NotNull(message = "First name is required", groups = {CreateUser.class, UpdateUser.class})
+    @NotBlank(message = "First name is required", groups = {CreateUser.class, UpdateUser.class})
     @Column(name = "first_name")
     private String firstName;
 
-    @NotNull(message = "Last name is required")
-    @NotBlank(message = "Last name is required")
+    @NotNull(message = "Last name is required", groups = {CreateUser.class, UpdateUser.class})
+    @NotBlank(message = "Last name is required", groups = {CreateUser.class, UpdateUser.class})
     @Column(name = "last_name")
     private String lastName;
 
-    @NotNull(message = "Email is required")
-    @NotBlank(message = "Email is required")
+    @NotNull(message = "Email is required", groups = {CreateUser.class, UpdateUser.class})
+    @NotBlank(message = "Email is required", groups = {CreateUser.class, UpdateUser.class})
     @Email(message = "Email format is invalid")
     @Column(name = "email")
     private String email;
@@ -39,8 +42,8 @@ public class UserInfo {
     @Column(name = "email_verified")
     private Boolean emailVerified;
 
-    @NotNull(message = "Password is required")
-    @NotBlank(message = "Password is required")
+    @NotNull(message = "Password is required", groups = {CreateUser.class, UpdateUser.class})
+    @NotBlank(message = "Password is required", groups = {CreateUser.class, UpdateUser.class})
     @Transient
     private String password;
 

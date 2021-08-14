@@ -1,6 +1,9 @@
 package com.ispace.dto;
 
 import com.ispace.entity.ArticleCategory;
+import com.ispace.validgroups.CreateArticle;
+import com.ispace.validgroups.UpdateArticle;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -11,16 +14,16 @@ public class ArticleDTO {
 
     private int id;
 
-    @NotNull(message = "Title is required")
-    @NotBlank(message = "Title is required")
+    @NotNull(message = "Title is required", groups = {CreateArticle.class, UpdateArticle.class})
+    @NotBlank(message = "Title is required", groups = {CreateArticle.class, UpdateArticle.class})
     private String title;
 
-    @NotNull(message = "Description is required")
-    @NotBlank(message = "Description is required")
+    @NotNull(message = "Description is required", groups = {CreateArticle.class, UpdateArticle.class})
+    @NotBlank(message = "Description is required", groups = {CreateArticle.class, UpdateArticle.class})
     private String description;
 
-    @NotNull(message = "Content is required")
-    @NotBlank(message = "Content is required")
+    @NotNull(message = "Content is required", groups = {CreateArticle.class, UpdateArticle.class})
+    @NotBlank(message = "Content is required", groups = {CreateArticle.class, UpdateArticle.class})
     private String content;
 
     @Valid

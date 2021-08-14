@@ -1,9 +1,11 @@
 package com.ispace.rest;
 
 import com.ispace.entity.UserInfo;
+import com.ispace.validgroups.CreateUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.ispace.service.UserInfoService;
 
@@ -40,7 +42,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/v1/users/register")
-    public ResponseEntity createUserInfo(@Valid @RequestBody UserInfo userInfo) throws Exception {
+    public ResponseEntity createUserInfo(@Validated(CreateUser.class) @RequestBody UserInfo userInfo) throws Exception {
         userInfo.setId(null);
         userInfo.setEmailVerified(false);
         UserInfo createdUser = userInfoService.createUserInfo(userInfo);
