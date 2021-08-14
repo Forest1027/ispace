@@ -6,7 +6,7 @@ okta:
 #
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ispace_dev?useSSL=false&serverTimezone=Europe/Dublin
+    url: jdbc:mysql://localhost:3306/ispace_dev?useSSL=false&serverTimezone=Europe/Dublin&&allowPublicKeyRetrieval=true
     username: ${db_username}
     password: ${db_password}
     driver-class-name: com.mysql.jdbc.Driver
@@ -31,4 +31,4 @@ logging:
     name: log/ISpace.log
   logback:
     rollingpolicy:
-      file-name-pattern: ISpace-%d{dd-MM-yyyy}.%i.log
+      file-name-pattern: log/ISpace-%d{dd-MM-yyyy}.%i.log

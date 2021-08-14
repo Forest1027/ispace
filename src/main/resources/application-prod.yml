@@ -28,4 +28,4 @@ logging:
     name: log/ISpace.log
   logback:
     rollingpolicy:
-      file-name-pattern: ISpace-%d{dd-MM-yyyy}.%i.log
+      file-name-pattern: log/ISpace-%d{dd-MM-yyyy}.%i.log
