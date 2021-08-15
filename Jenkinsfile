@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker }
+    agent any
     environment {
         PROFILE = "${BRANCH_NAME=='main'?'prod':'dev'}"
     }
