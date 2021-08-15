@@ -1,11 +1,10 @@
 pipeline {
-    agent any
+    agent { label "linux" }
     environment {
         PROFILE = "${BRANCH_NAME=='main'?'prod':'dev'}"
     }
     tools {
         maven 'apache-maven-3.8.2'
-        docker 'docker-latest'
     }
     stages {
         stage("test") {
