@@ -35,7 +35,7 @@ pipeline {
                     -t 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest .
                 '''
                 script {
-                    docker.withRegistry('https://896850397919.dkr.ecr.eu-west-1.amazonaws.com', 'ecr:us-east-1:ispace_aws') {
+                    docker.withRegistry('https://896850397919.dkr.ecr.eu-west-1.amazonaws.com', 'ecr:ispace_aws') {
                         //push image
                         sh "docker push 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest"
                     }
