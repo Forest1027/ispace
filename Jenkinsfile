@@ -34,7 +34,13 @@ pipeline {
                     --build-arg okta_apikey=${OKTA_APIKEY}  \
                     -t 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest .
                 '''
-                sh "docker push 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest"
+                script {
+                    docker.withRegistry('https://896850397919.dkr.ecr.eu-west-1.amazonaws.com', 'ecr:us-east-1:ispace_aws') {
+                        //push image
+                        sh "docker push 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest"
+                    }
+                }
+
             }
         }
         stage("deploy") {
