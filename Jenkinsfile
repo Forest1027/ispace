@@ -32,13 +32,15 @@ pipeline {
                     --build-arg db_username=${DB_USERNAME}  \
                     --build-arg db_password=${DB_PASSWORD}  \
                     --build-arg okta_apikey=${OKTA_APIKEY}  \
-                    -t ispace:latest .
+                    -t 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest .
                 '''
             }
         }
         stage("deploy") {
             steps {
                 echo "deploying the application"
+                sh "docker stop ispace && docker rm ispace"
+                sh "docker run -d --network='host' --name ispace 896850397919.dkr.ecr.us-east-1.amazonaws.com/ispace:latest"
             }
         }
     }
