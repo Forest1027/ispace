@@ -26,7 +26,6 @@ pipeline {
            }
             steps {
                 echo "dockerize the application"
-                echo "${DB_PASSWORD}"
                 sh '''
                     docker build  \
                     --build-arg profile=${PROFILE}  \
